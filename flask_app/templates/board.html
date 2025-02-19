@@ -1,0 +1,79 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+    <link href="{{ url_for('static', filename='board/css/board.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='board/css/chat.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block extrajs %}
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js" defer></script>
+    <script src="https://cdn.socket.io/3.1.1/socket.io.min.js" defer></script>
+    <script src="{{ url_for('static', filename='board/js/board_socket.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='board/js/board_chat.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='board/js/task_drag.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='board/js/task_edit.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='board/js/task_delete.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='board/js/task_create.js') }}" defer></script>
+{% endblock %}
+
+
+{% macro taskblock(task) %}
+    <div class="task" id="task-{{ task.task_id }}" draggable="true">
+        {% if task.name %}
+            <input type="text" title="Task name" placeholder="Task name" disabled class="task-name form-field" value="{{ task.name }}">
+        {% else %}
+            <input type="text" title="Task name" placeholder="Task name" disabled class="task-name form-field">
+        {% endif %}
+        {% if task.description %}
+            <div title="Task description" fake-placeholder="Task description" disabled class="task-description form-field" contenteditable="false">{{ task.description }}</div>
+        {% else %}
+            <div title="Task description" fake-placeholder="Task description" disabled class="task-description form-field" contenteditable="false"></div>
+        {% endif %}
+        <div class="task-buttons">
+            <button class="task-delete form-button">Delete</button>
+            <button class="task-edit form-button">Edit</button>
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% block maincontent %}
+<div class="board" id="{{ board_data.board_id }}">
+    <h1 id="board-title">{{ board_data.name }}</h1>
+    <div id="lists-container">
+        <div class="board-list-container" id="todo">
+            <h2 class="board-list-title">Todo</h2>
+            <div class="board-list">    
+                {% for task in board_data.todo_tasks %}
+                    {{ taskblock(task) }}
+                {% endfor %}
+            </div>
+            <button class="form-button create-task-button" value="todo">New task</button>
+        </div>
+        <div class="board-list-container" id="in-progress">
+            <h2 class="board-list-title">In Progress</h2>
+            <div class="board-list">
+                {% for task in board_data.in_progress_tasks %}
+                    {{ taskblock(task) }}
+                {% endfor %}
+            </div>
+            <button class="form-button create-task-button" value="in-progress">New task</button>
+        </div>
+        <div class="board-list-container" id="done">
+            <h2 class="board-list-title">Done</h2>
+            <div class="board-list">
+                {% for task in board_data.done_tasks %}
+                    {{ taskblock(task) }}
+                {% endfor %}
+            </div>
+            <button class="form-button create-task-button" value="done">New task</button>
+        </div>
+    </div>
+</div>
+<hr id="chat-seperator">
+<div id="chat">
+    <h2 id="chat-title">Chat</h2>
+    <div id="chat-box"></div>
+    <input type="text" id="message-input" title="Enter your message" placeholder="Enter Your Message Here"/>
+</div>
+{% endblock %}  

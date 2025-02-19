@@ -1,0 +1,50 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+<link href="{{ url_for('static', filename='main/css/board_card.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block extrajs %}
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js" defer></script>
+<script src="{{ url_for('static', filename='main/js/board_creation.js') }}" defer></script>
+<script src="{{ url_for('static', filename='main/js/board_deletion.js') }}" defer></script>
+{% endblock %}
+
+{% block maincontent %}
+<div id="home-content">
+    <h1 id="home-title">Projects</h1>
+    <hr>
+    <div id="board-container">
+        {% for board_id, board in boards.items() %}
+            <div class="board-card" id="{{ board_id }}"> 
+                <div class="board-card-delete">
+                    {% if board.owner == user %}
+                        <button class="board-card-delete-button" board-id="{{ board_id }}">×</button>
+                    {% endif %}
+                </div>
+                <a class="board-link" href="{{ url_for('board', board_id=board_id) }}">
+                    <div class="board-card-clickable">
+                        <div class="board-card-name">{{ board.name }}</div>
+                        <div class="board-card-stats">
+                            <p class="board-card-todo">{{ board.todo_tasks|count }}</p>
+                            <p class="board-card-in-progress">{{ board.in_progress_tasks|count }}</p>
+                            <p class="board-card-done">{{ board.done_tasks|count }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div> 
+        {% endfor %}
+        <button id="create-board-button" class="form-button">Create a board</button>
+    </div>
+</div>
+<dialog class="form-container" id="create-board-dialog">
+    <form class="basic-form" id="create-board-dialog-form">
+        <button class="close-dialog-button" id="close-create-board-dialog" type="button" formmethod="dialog" formnovalidate>×</button>
+        <h1 class="form-title">New board</h1>
+        <input class="form-field" id="board-name-field" type="text" name="board-name" title="Enter a title for the board" placeholder="Title" required="required"/>
+        <input class="form-field" id="board-members-field" type=email" name="board-members" title="List the members of the board" placeholder="Board members (e.g. user@email.com, guest@url.com)" multiple/>
+        <button id="submit-create-board-dialog" class="form-button" type="submit">Create</button>
+    </form>
+    <p class="form-error" id="create-board-error"></p>
+</dialog>
+{% endblock %}

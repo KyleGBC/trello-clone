@@ -1,0 +1,23 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+<link href="{{ url_for('static', filename='login/css/login.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block extrajs %}
+<script src="{{ url_for('static', filename='login/js/login.js') }}" defer></script>
+{% endblock %}
+
+{% block maincontent %}
+<div class="centering-container">
+    <div class="form-container">
+        <form id="login-form" class="basic-form">
+            <h1 class="form-title" id="login-title">Login</h1>
+            <input class="form-field" type="email" name="email" title="Enter email address" placeholder="Email" required="required" />
+            <input class="form-field" type="password" name="password" title="Enter password" placeholder="Password" required="required" />
+        <button class="form-button" type="submit">Let me in</button>
+        </form>
+    </div>
+    <p class="form-error" id="login-error"></p>
+</div>
+{% endblock %}

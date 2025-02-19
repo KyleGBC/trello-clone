@@ -1,0 +1,39 @@
+.form-container {
+    width: min(30rem, 50%);
+    margin: auto;
+    border-radius: 0.3125rem;
+    padding: 1.25rem;
+    box-shadow: 0 0 0.3125rem #1D2228;
+}
+.basic-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field {
+    margin-bottom: 0.625rem;
+    padding: 0.3125rem;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.form-button {
+    background-color: #7DC4F1;
+    padding: 0.625rem;
+    border: none;
+    cursor: pointer;
+}
+
+.form-button:hover {
+    filter: brightness(90%);
+}
+
+.form-error {
+    color: red;
+    text-align: center;
+    margin-top: 0.625rem;
+}

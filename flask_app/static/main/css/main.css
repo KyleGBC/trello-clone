@@ -1,0 +1,85 @@
+@font-face{
+    font-family: Iosevka;
+    src: url("/static/main/fonts/Iosevka-Regular.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+	font-family: Iosevka;
+	font-display: swap;
+	font-weight: 400;
+	font-stretch: normal;
+	font-style: normal;
+	src: url('/static/main/fonts/Iosevka-Regular.woff2') format('woff2'), url('/static/main/fonts/Iosevka-Regular.ttf') format('truetype');
+}
+
+
+* {
+    font-family: Iosevka;
+}
+
+#page-body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#page-main-content {
+    flex: 1 1 0;
+}
+
+.centering-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%
+}
+
+#board-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#home-content {
+    margin: 0 auto;
+    width: 70%;
+}
+
+#create-board-dialog {
+    border: none;
+}
+
+#create-board-dialog::backdrop {
+    background-color: #00000033;
+}
+
+.close-dialog-button {
+    margin-left: auto;
+    margin-bottom: 0;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.625rem;
+}
+
+.board-card:hover {
+	transform: scale(1.01);
+}
+
+.close-dialog-button:hover {
+    color: #F17E7E;
+}
+
+.board-card-delete-button {
+    cursor: pointer;
+}
+
+.board-card-delete-button:hover {
+    color: #F17E7E;
+}
+/* black: #1D2228 white: #E1E2E2 */
+/* Blue accent: #7DC4F1 */
+/* red accent: #F17E7E */

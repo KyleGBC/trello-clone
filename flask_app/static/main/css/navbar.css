@@ -1,0 +1,34 @@
+#page-navbar {
+    display: flex;
+    align-items: center;
+    background-color: #1D2228;
+    height: min(4.5rem, 15vh);
+    justify-content: flex-start;
+}
+
+.navbar-link {
+    font-size: min(1.5rem, 5vh);
+    text-decoration: none;
+    color: #E1E2E2;
+    margin: 0 1rem;
+}
+
+.navbar-link:hover {
+    color: #7DC4F1;
+}
+
+#user-display {
+    font-size: min(1.5rem, 5vh);
+    font-style: italic;
+    color: #E1E2E2;
+    overflow: hidden;
+    text-wrap: nowrap;
+    margin: 0 1rem;
+    padding-right: 0.5rem;
+}
+
+.vertical-line {
+    height: 75%;
+    border-left: solid #E1E2E2;
+    border-radius: 1rem;
+}

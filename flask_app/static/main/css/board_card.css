@@ -1,0 +1,68 @@
+#create-board-button {
+    margin: 0.5rem 0;
+}
+
+.board-card {
+    display: flex;
+    height: 5rem;
+    border-radius: 0.3125rem;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0.5rem 0;
+    background-color: #e3e3e3;
+}
+
+.board-card-delete {
+    width: 5%;
+    text-align: center;
+    height: 100%;
+}
+
+.board-card-delete-button {
+    background:none;
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+.board-link {
+    height: 100%;
+    flex-grow: 1;   
+    text-decoration: none;
+    color: #000000;
+    overflow: hidden;
+}
+
+.board-card-clickable {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+
+.board-card-stats {
+    display: flex;
+    margin: 0 1rem;
+}
+
+.board-card-todo, .board-card-in-progress, .board-card-done {
+    margin: auto 0.5rem;
+    flex-grow: 0;
+}
+
+.board-card-todo {
+    color: #FF0000;
+}
+
+.board-card-in-progress {
+    color: #ff4500;
+}
+
+.board-card-done {
+    color: #008000;
+}
+
+.board-card-name {
+    flex-grow: 1;
+}

@@ -1,0 +1,24 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+<link href="{{ url_for('static', filename='login/css/login.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block extrajs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+<script src="{{ url_for('static', filename='login/js/signup.js') }}" defer></script>
+{% endblock %}
+
+{% block maincontent %}
+<div class="centering-container">
+    <div class="form-container">
+        <form class="basic-form" id="signup-form">
+            <h1 class="form-title" id="signup-title">Create an account</h1>
+            <input class="form-field" type="text" name="email" title="Enter email address" placeholder="Email" required="required" />
+            <input class="form-field" type="password" name="password" title="Enter password" placeholder="Password" required="required" />
+        <button class="form-button" type="submit">Get started</button>
+        </form>
+    </div>
+    <p class="form-error" id="signup-error"></p>
+</div>
+{% endblock %}
